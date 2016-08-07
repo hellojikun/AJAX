@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			//console.log(new XMLHttpRequest);
+			function createXHR(){
+				var xhr = new XMLHttpRequest;
+				return xhr;
+			}
+			function vote(){
+				var xhr = createXHR();
+				//打开连接
+				xhr.open('GET','01-vote.php',true);
+				//发送信息
+				xhr.send(null);
+				//获取返回信息 
+				//绑定状态变化的回调函数
+				xhr.onreadystatechange = function(){
+					if(this.readyState == 4){
+						if(this.responseText == '1'){
+								alert('投票成功');
+						}else{
+							alert("投票失败");
+						}
+					
+						
+					}
+					/*var pg = document.getElementById('progress');
+					pg.innerHTML = pg.innerHTML + '状态已经变成' +
+					this.readyState + '<br />'; 
+					//状*态为4时请求成功。
+					*/
+				}
+				alert('hello');
+				 
+			}
+			
+	
+			
+			
+		</script>
+	</head>
+	<body>
+	<div>
+			<p><img src="01.jpg"></p>
+			<p><input type="button" value="投票2"onclick="vote();"></p>
+			<div id = 'progress'></div>
+	</body>
+</html>
